@@ -47,6 +47,12 @@
 
 
         <!--<projectConfigurable instance="com.njnu.kai.plugin.preference.configurable.KaiProjectConfigurable"/>-->
+        <internalFileTemplate name="TTMvpListActivity"/>
+        <internalFileTemplate name="TTMvpListFragment"/>
+        <internalFileTemplate name="TTMvpListAdapter"/>
+        <internalFileTemplate name="TTMvpListPresenter"/>
+        <internalFileTemplate name="TTNuwaBinder"/>
+        <internalFileTemplate name="TTNuwaVO"/>
 
     </extensions>
 
@@ -55,6 +61,10 @@
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <action id="kai.practice.SayHiAction" class="com.njnu.kai.plugin.practice.SayHiAction" text="Say Hi Music"
                     description="Say Hi Action的描述文字"></action>
+            <action id="kai.practice.TestXml" class="com.njnu.kai.plugin.practice.TestXmlAction" text="Test xml operate"
+                    description="测试xml操作"></action>
+            <action id="kai.practice.template" class="com.njnu.kai.plugin.practice.TestTemplateAction" text="Test template operate"
+                    description="测试模板操作"></action>
         </group>
 
         <action id="kai.viewgeneration" class="com.njnu.kai.plugin.viewgenerator.action.ViewGenerateAction"
@@ -68,9 +78,14 @@
             <add-to-group group-id="GenerateGroup" anchor="first"/>
         </action>
 
-        <action id="kai.mvp_generate" class="com.njnu.kai.plugin.mvp.MvpGenerateAction" text="Mvp Code Generate" description="自动创建mvp样本代码">
+        <!--<action id="kai.mvp_generate" class="com.njnu.kai.plugin.mvp.MvpGenerateAction" text="Mvp Code Generate" description="自动创建mvp样本代码">-->
+        <!--<add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>-->
+        <!--</action>-->
+
+        <action id="kai.template_mvp_generate" class="com.njnu.kai.plugin.mvp.TemplateMvpGenerateAction" text="Mvp Code Generate" description="自动创建mvp样本代码">
             <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
         </action>
+
     </actions>
 
     <!--<application-components>-->

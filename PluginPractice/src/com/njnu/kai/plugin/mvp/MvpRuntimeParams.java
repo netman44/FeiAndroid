@@ -8,6 +8,32 @@ import com.intellij.openapi.project.Project;
  */
 public class MvpRuntimeParams {
 
+    private boolean mUseNuwa;
+
+    private boolean mUserCreateNuwaBinder;
+
+    public MvpRuntimeParams setUserCreateNuwaBinder(boolean userCreateNuwaBinder) {
+        mUserCreateNuwaBinder = userCreateNuwaBinder;
+        return this;
+    }
+
+    public boolean isUserCreateNuwaBinder() {
+        return mUserCreateNuwaBinder;
+    }
+
+    public void setUseNuwa(boolean useNuwa) {
+        mUseNuwa = useNuwa;
+    }
+
+    public boolean isUseNuwa() {
+        return mUseNuwa;
+    }
+
+    private String mEntityName;
+
+
+
+
     public interface Action {
         void run(MvpRuntimeParams context);
     }
@@ -16,45 +42,66 @@ public class MvpRuntimeParams {
 
     private Project mProject;
 
-    private String mActivityCanonicalName;
-    private String mListFragmentCanonicalName;
-    private String mListAdapterCanonicalName;
-    private String mListPresenterCanonicalName;
+    private String mListActivityPackageName;
+    private String mListFragmentPackageName;
+    private String mListAdapterPackageName;
+    private String mListPresenterPackageName;
+
+    private String mNuwaBinderPackageName;
+    private String mNuwaVOPackageName;
 
     private boolean mCheckActivity;
     private boolean mCheckListFragment;
     private boolean mCheckListAdapter;
     private boolean mCheckListPresenter;
 
-    private String mEntityName;
+
 
     public MvpRuntimeParams(Action action, Project project) {
         mAction = action;
         mProject = project;
     }
 
-    public String getActivityCanonicalName() {
-        return mActivityCanonicalName;
+    public String getNuwaBinderPackageName() {
+        return mNuwaBinderPackageName;
     }
 
-    public void setActivityCanonicalName(String activityCanonicalName) {
-        mActivityCanonicalName = activityCanonicalName;
+    public MvpRuntimeParams setNuwaBinderPackageName(String nuwaBinderPackageName) {
+        mNuwaBinderPackageName = nuwaBinderPackageName;
+        return this;
     }
 
-    public String getListFragmentCanonicalName() {
-        return mListFragmentCanonicalName;
+    public String getNuwaVOPackageName() {
+        return mNuwaVOPackageName;
     }
 
-    public void setListFragmentCanonicalName(String listFragmentCanonicalName) {
-        mListFragmentCanonicalName = listFragmentCanonicalName;
+    public MvpRuntimeParams setNuwaVOPackageName(String nuwaVOPackageName) {
+        mNuwaVOPackageName = nuwaVOPackageName;
+        return this;
     }
 
-    public String getListAdapterCanonicalName() {
-        return mListAdapterCanonicalName;
+    public String getListActivityPackageName() {
+        return mListActivityPackageName;
     }
 
-    public void setListAdapterCanonicalName(String listAdapterCanonicalName) {
-        mListAdapterCanonicalName = listAdapterCanonicalName;
+    public void setListActivityPackageName(String listActivityPackageName) {
+        mListActivityPackageName = listActivityPackageName;
+    }
+
+    public String getListFragmentPackageName() {
+        return mListFragmentPackageName;
+    }
+
+    public void setListFragmentPackageName(String listFragmentPackageName) {
+        mListFragmentPackageName = listFragmentPackageName;
+    }
+
+    public String getListAdapterPackageName() {
+        return mListAdapterPackageName;
+    }
+
+    public void setListAdapterPackageName(String listAdapterPackageName) {
+        mListAdapterPackageName = listAdapterPackageName;
     }
 
     public boolean isCheckActivity() {
@@ -93,12 +140,12 @@ public class MvpRuntimeParams {
         return mProject;
     }
 
-    public String getListPresenterCanonicalName() {
-        return mListPresenterCanonicalName;
+    public String getListPresenterPackageName() {
+        return mListPresenterPackageName;
     }
 
-    public void setListPresenterCanonicalName(String listPresenterCanonicalName) {
-        mListPresenterCanonicalName = listPresenterCanonicalName;
+    public void setListPresenterPackageName(String listPresenterPackageName) {
+        mListPresenterPackageName = listPresenterPackageName;
     }
 
     public boolean isCheckListPresenter() {
@@ -115,8 +162,8 @@ public class MvpRuntimeParams {
 
 
 
-    public String getActivityClassName() {
-        return mEntityName + "Activity";
+    public String getListActivityClassName() {
+        return mEntityName + "ListActivity";
     }
 
     public String getListFragmentClassName() {
@@ -131,21 +178,37 @@ public class MvpRuntimeParams {
         return mEntityName + "ListPresenter";
     }
 
+    public String getNuwaBinderClassName() {
+        return mEntityName + "NuwaBinder";
+    }
+
+    public String getNuwaVOClassName() {
+        return mEntityName + "NwaVO";
+    }
+
 
     //可选带包名的全名称,便于修正import时自动导入
-    public String getFullActivityClassName() {
-        return mActivityCanonicalName + "." + mEntityName + "Activity";
+    public String getFullListActivityClassName() {
+        return mListActivityPackageName + "." + mEntityName + "ListActivity";
     }
 
     public String getFullListFragmentClassName() {
-        return mListFragmentCanonicalName + "." + mEntityName + "ListFragment";
+        return mListFragmentPackageName + "." + mEntityName + "ListFragment";
     }
 
     public String getFullListAdapterClassName() {
-        return mListAdapterCanonicalName + "." + mEntityName + "ListAdapter";
+        return mListAdapterPackageName + "." + mEntityName + "ListAdapter";
+    }
+
+    public String getFullNuwaBinderClassName() {
+        return mNuwaBinderPackageName + "." + mEntityName + "NuwaBinder";
+    }
+
+    public String getFullNuwaVOClassName() {
+        return mNuwaBinderPackageName + "." + mEntityName + "NuwaVO";
     }
 
     public String getFullListPresenterClassName() {
-        return mListPresenterCanonicalName + "." + mEntityName + "ListPresenter";
+        return mListPresenterPackageName + "." + mEntityName + "ListPresenter";
     }
 }

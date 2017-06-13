@@ -1,0 +1,22 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+
+import ${FRAGMENT};
+
+/**
+ * Author: ${USER}
+ * Created on ${DATE}
+ */
+public class ${ENTITY}ListActivity extends WrapFragmentActionBarActivity {
+            
+                @Override
+                protected String getActionBarTitle() {
+                    return "title src";
+                }
+            
+                @Override
+                protected Class wrapFragmentClass() {
+                    return ${ENTITY}ListFragment.class;
+                }
+            
+            };
+            
